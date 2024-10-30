@@ -71,6 +71,7 @@ class nnFormerTrainerV2_nnformer_synapse(nnFormerTrainer_synapse):
         self.embedding_patch_size=[2,4,4]
         self.window_size=[4,4,8,4]
         self.deep_supervision=True
+        
     def initialize(self, training=True, force_load_plans=False):
         """
         - replaced get_default_augmentation with get_moreDA_augmentation
@@ -173,10 +174,10 @@ class nnFormerTrainerV2_nnformer_synapse(nnFormerTrainer_synapse):
                                 patch_size=self.embedding_patch_size,
                                 window_size=self.window_size,
                                 deep_supervision=self.deep_supervision)
-        if self.load_pretrain_weight:
-            checkpoint = torch.load('/home/xychen/jsguo/weight/gelunorm_former_skip_global_shift.model', map_location='cpu')
-            self.network.load_state_dict(checkpoint)
-            print('I am using the pre_train weight!!')   
+        # if self.load_pretrain_weight:
+        #     checkpoint = torch.load('/home/xychen/jsguo/weight/gelunorm_former_skip_global_shift.model', map_location='cpu')
+        #     self.network.load_state_dict(checkpoint)
+        #     print('I am using the pre_train weight!!')   
         
      
         if torch.cuda.is_available():

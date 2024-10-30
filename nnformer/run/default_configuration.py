@@ -51,6 +51,7 @@ def get_default_configuration(network, task, network_trainer, plans_identifier=d
         Stage=1
     else:
         Stage=0
+        
     if task=='Task001_ACDC':
         plans['plans_per_stage'][Stage]['batch_size']=4
         plans['plans_per_stage'][Stage]['patch_size']=np.array([14,160,160])
@@ -65,12 +66,23 @@ def get_default_configuration(network, task, network_trainer, plans_identifier=d
         pickle_file = open(plans_file,'wb')
         pickle.dump(plans, pickle_file)
         pickle_file.close()
+        
     elif task=='Task003_tumor':
         plans['plans_per_stage'][Stage]['batch_size']=2
         plans['plans_per_stage'][Stage]['patch_size']=np.array([128,128,128])
         pickle_file = open(plans_file,'wb')
         pickle.dump(plans, pickle_file)
         pickle_file.close()
+    
+    # 对新数据，默认用BTCV的配置
+    else:
+        plans['plans_per_stage'][Stage]['batch_size']=2
+        plans['plans_per_stage'][Stage]['patch_size']=np.array([64,128,128])
+        plans['plans_per_stage'][Stage]['pool_op_kernel_sizes']=[[2,2,2],[2,2,2],[2,2,2]] # for deep supervision
+        pickle_file = open(plans_file,'wb')
+        pickle.dump(plans, pickle_file)
+        pickle_file.close()
+    
     possible_stages = list(plans['plans_per_stage'].keys())
 
     if (network == '3d_cascade_fullres' or network == "3d_lowres") and len(possible_stages) == 1:

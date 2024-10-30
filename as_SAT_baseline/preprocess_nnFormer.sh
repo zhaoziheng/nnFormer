@@ -1,0 +1,1 @@
+srun0g nnFormer_plan_and_preprocess -t 16 -pl2d None

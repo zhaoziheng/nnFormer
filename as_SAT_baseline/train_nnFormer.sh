@@ -1,0 +1,1 @@
+srun1g nnFormer_train 3d_fullres nnFormerTrainerV2_nnformer_synapse 16 all

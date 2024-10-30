@@ -21,6 +21,7 @@ dependencies:
   - xz=5.2.5=h7b6447c_0
   - zlib=1.2.11=h7b6447c_3
   - pip:
+    - --trusted-host pkg.pjlab.org.cn
     - argparse==1.4.0
     - batchgenerators==0.21
     - bertviz==1.1.0
@@ -83,4 +84,3 @@ dependencies:
     - unittest2==1.1.0
     - yacs==0.1.8
     - zipp==3.5.0
-

@@ -316,7 +316,7 @@ class nnFormerTrainer_synapse(NetworkTrainer):
 
     def run_training(self):
         self.save_debug_information()
-        super(nnFormerTrainer_synapse, self).run_training()
+        super(nnFormerTrainer_synapse, self).run_training(self.plans)
 
     def load_plans_file(self):
         """

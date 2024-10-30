@@ -436,7 +436,12 @@ class NetworkTrainer(object):
         """
         pass
 
-    def run_training(self):
+    def run_training(self, plan):
+        
+        # Read Dataset Name from Plan
+        tmp = plan['preprocessed_data_folder']
+        dataset_name = tmp.split('/')[-1]   # Task017_CHAOSCT
+        
         if not torch.cuda.is_available():
             self.print_to_log_file("WARNING!!! You are attempting to run training on a CPU (torch.cuda.is_available() is False). This can be VERY slow!")
 
@@ -460,7 +465,7 @@ class NetworkTrainer(object):
             self.initialize(True)
 
         while self.epoch < self.max_num_epochs:
-            self.print_to_log_file("\nepoch: ", self.epoch)
+            self.print_to_log_file(f"{dataset_name} Epoch {self.epoch}")
             epoch_start_time = time()
             train_losses_epoch = []
 

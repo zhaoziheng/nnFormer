@@ -26,13 +26,13 @@ default_cascade_trainer = "nnFormerTrainerV2CascadeFullRes"
 PLEASE READ paths.md FOR INFORMATION TO HOW TO SET THIS UP
 """
 
-base = os.environ['nnFormer_raw_data_base'] if "nnFormer_raw_data_base" in os.environ.keys() else None
-preprocessing_output_dir = os.environ['nnFormer_preprocessed'] if "nnFormer_preprocessed" in os.environ.keys() else None
-network_training_output_dir_base = os.path.join(os.environ['RESULTS_FOLDER']) if "RESULTS_FOLDER" in os.environ.keys() else None
+base ='/mnt/hwfile/medai/zhaoziheng/SAM/nnUNet_data'
+preprocessing_output_dir = join(base, 'nnUNet_nnFormer_preprocessed')
+network_training_output_dir_base = join(base, 'nnUNet_nnFormer_results')
 
 if base is not None:
-    nnFormer_raw_data = join(base, "nnFormer_raw_data")
-    nnFormer_cropped_data = join(base, "nnFormer_cropped_data")
+    nnFormer_raw_data = join(base, "nnUNet_MedNeXt_raw")
+    nnFormer_cropped_data = join(base, "nnUNet_nnFormer_cropped")
     maybe_mkdir_p(nnFormer_raw_data)
     maybe_mkdir_p(nnFormer_cropped_data)
 else:

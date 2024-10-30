@@ -1,0 +1,1 @@
+nnFormer_train 3d_fullres nnFormerTrainerV2_nnformer_synapse TASKID all
